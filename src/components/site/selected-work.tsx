@@ -72,7 +72,10 @@ function ProjectFeature({ project, layout }: { project: Project; layout: Layout 
           className="group mt-10 inline-flex items-center gap-3 text-sm font-medium tracking-tight"
         >
           <span className="link-underline-static pb-0.5">Read project notes</span>
-          <span aria-hidden="true" className="transition-transform duration-500 ease-editorial group-hover:translate-x-1">
+          <span
+            aria-hidden="true"
+            className="transition-transform duration-500 ease-editorial group-hover:translate-x-1"
+          >
             →
           </span>
         </Link>
@@ -82,24 +85,34 @@ function ProjectFeature({ project, layout }: { project: Project; layout: Layout 
 }
 
 export function SelectedWork() {
+  const completedCount = projects.filter((project) => project.status === "Completed").length;
+
   return (
     <section id="work" aria-labelledby="work-title" className="section-space">
       <div className="shell">
-        <SectionHeader index="02" label="Selected Work" aside={`${String(projects.length).padStart(2, "0")} projects — ongoing`} />
+        <SectionHeader
+          index="02"
+          label="Selected Work"
+          aside={`${String(projects.length).padStart(2, "0")} projects — ${completedCount} completed`}
+        />
 
         <div className="grid-editorial mt-12 gap-y-8 lg:mt-20">
           <h2 id="work-title" className="type-headline reveal col-span-full lg:col-span-7">
             Selected work
           </h2>
           <p className="type-body reveal col-span-full max-w-[44ch] text-muted-foreground md:col-span-5 lg:col-span-4 lg:col-start-9 lg:self-end">
-            Three ongoing projects across routing research, monitoring, and hands-on labs. Imagery is illustrative —
-            real screenshots will be added as each project matures.
+            Three projects across MikroTik monitoring, BGP visibility, and hands-on labs. Projects
+            are presented at their actual development stages.
           </p>
         </div>
 
         <div className="mt-20 flex flex-col gap-28 md:gap-36 lg:mt-32 lg:gap-48">
           {projects.map((project, i) => (
-            <ProjectFeature key={project.slug} project={project} layout={layouts[i % layouts.length]!} />
+            <ProjectFeature
+              key={project.slug}
+              project={project}
+              layout={layouts[i % layouts.length]!}
+            />
           ))}
         </div>
       </div>

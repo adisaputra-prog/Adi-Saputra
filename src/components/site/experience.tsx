@@ -16,11 +16,13 @@ export function Experience() {
         </div>
 
         <ol className="relative mt-16 lg:mt-24">
-          {/* Vertical rule of the timeline */}
-          <span aria-hidden="true" className="absolute bottom-0 left-[3px] top-0 w-px bg-border lg:left-[calc((100%-11*var(--gutter))/12*3+3*var(--gutter)-var(--gutter)/2)]" />
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-[3px] top-0 w-px bg-border lg:left-[calc((100%-11*var(--gutter))/12*3+3*var(--gutter)-var(--gutter)/2)]"
+          />
           {experience.map((item) => (
             <li key={item.organization} className="reveal relative">
-              <div className="grid-editorial gap-y-5 py-10 pl-8 lg:py-14 lg:pl-0">
+              <div className="grid-editorial gap-y-5 border-b border-border py-10 pl-8 lg:gap-y-6 lg:py-14 lg:pl-0">
                 <span
                   aria-hidden="true"
                   className={cn(
@@ -33,12 +35,31 @@ export function Experience() {
                 </p>
                 <div className="col-span-full md:col-span-4 lg:col-span-4 lg:col-start-4">
                   <h3 className="type-title">{item.organization}</h3>
-                  {item.legalName ? <p className="type-label mt-3 text-muted-foreground">{item.legalName}</p> : null}
+                  {item.legalName ? (
+                    <p className="type-label mt-3 text-muted-foreground">{item.legalName}</p>
+                  ) : null}
                   <p className="mt-5 text-base font-medium tracking-tight">{item.role}</p>
                 </div>
                 <p className="type-body col-span-full max-w-[52ch] text-muted-foreground md:col-span-4 lg:col-span-4 lg:col-start-9 lg:pt-2">
                   {item.description}
                 </p>
+                {item.responsibilities && (
+                  <div className="col-span-full grid gap-y-3 border-t border-border/70 pt-5 md:grid-cols-8 md:gap-x-[var(--gutter)] lg:grid-cols-12">
+                    <h4 className="type-label text-muted-foreground md:col-span-2 lg:col-span-3">
+                      Focus areas
+                    </h4>
+                    <ul className="col-span-full flex flex-wrap gap-2 md:col-span-6 lg:col-span-9">
+                      {item.responsibilities.map((responsibility) => (
+                        <li
+                          key={responsibility}
+                          className="type-label border border-border px-3 py-2 text-muted-foreground"
+                        >
+                          {responsibility}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </li>
           ))}
