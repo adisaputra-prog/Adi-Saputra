@@ -147,6 +147,14 @@ export const interests = [
 
 export const experience = [
   {
+    organization: "BPKP",
+    legalName: "Badan Pengawasan Keuangan dan Pembangunan",
+    role: "IT Support Intern",
+    period: "June 2025 — December 2025",
+    current: false,
+    description: "Practical experience in IT support and technical troubleshooting.",
+  },
+  {
     organization: "Velo Network",
     legalName: "PT Nettocyber Indonesia",
     role: "QoSE / Network Operations",
@@ -154,14 +162,6 @@ export const experience = [
     current: true,
     description:
       "Working in ISP network operations with a focus on customer escalations, network performance investigation, traceroute analysis, and application connectivity evaluation.",
-  },
-  {
-    organization: "BPKP",
-    legalName: null,
-    role: "IT Support Intern",
-    period: "6 months",
-    current: false,
-    description: "Practical experience in IT support and technical troubleshooting.",
   },
 ];
 
@@ -189,6 +189,18 @@ export const expertise = [
     items: ["Python Fundamentals", "FastAPI", "REST APIs"],
   },
 ];
+
+export const education = [
+  { kind: "Education", title: "SMKN 54 Jakarta", detail: "Computer and Network Engineering (TKJ)" },
+  { kind: "Certification", title: "MTCNA", detail: "MikroTik Certified Network Associate" },
+];
+
+/** Public path of the downloadable certification PDF. */
+export const certificationPdf = {
+  href: "/certifications/adi-saputra-mtcna.pdf",
+  fileName: "Adi-Saputra-MTCNA.pdf",
+  label: "Download certificate (PDF)",
+};
 
 export const navItems = [
   { id: "work", label: "Work" },
