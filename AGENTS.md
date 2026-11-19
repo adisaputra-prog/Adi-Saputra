@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All portfolio copy, projects, experience and contact details live in `src/content/portfolio.ts`; components only render it — keeps content edits in one place.
+- Page sections are separate components in `src/components/site/`; the home route composes them and the shared header/footer live in `__root.tsx` around `<Outlet />`.
+- Project detail pages are the `/work/$slug` route, resolved from the content file; unknown slugs throw `notFound()`.
+- Scroll reveals use the `.reveal` class + `useReveal()` hook (hidden state only after hydration) — avoids SSR content being invisible without JS.
+- Empty contact values must render as "To be added" and never be linked — the owner forbids invented URLs.

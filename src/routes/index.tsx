@@ -1,23 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { About } from "@/components/site/about";
+import { Contact } from "@/components/site/contact";
+import { Education } from "@/components/site/education";
+import { Experience } from "@/components/site/experience";
+import { Expertise } from "@/components/site/expertise";
+import { Hero } from "@/components/site/hero";
+import { SelectedWork } from "@/components/site/selected-work";
+import { useReveal } from "@/hooks/use-reveal";
+
+const title = "Adi Saputra — Network Operations & QoSE Engineer, Jakarta";
+const description =
+  "Portfolio of Adi Saputra, an early-career network operations and QoSE professional in Jakarta exploring BGP routing, network performance and ISP infrastructure.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useReveal("home");
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <SelectedWork />
+      <About />
+      <Experience />
+      <Expertise />
+      <Education />
+      <Contact />
+    </>
   );
 }
